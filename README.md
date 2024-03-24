@@ -1,4 +1,4 @@
-# infrastructure
+# EKS infrastructure as code using Terragrunt/Terraform and CI/CD best practices
 This is a sample of the proper way to deploy infrastructure using Terraform/Terragrunt. 
 ## Infrastructure module
 Reusable pieces of infrastructure, the same module can be used in different projects.
@@ -8,4 +8,4 @@ Reusable pieces of infrastructure, the same module can be used in different proj
 ## Infrastructure live
 Build live infrastructure using the reusable modules. The structure allows to separate dev/ prod environments into different folders. Additionally, the modules can be split into different lifecycles so they can be taken up and down at different times. As an example i have a dev environment that contains one lifecycle for my vpc and filesystem that will host a downloaded dataset ~2h to download, and one lifecycle for the eks cluster that will container the cluster for distributed training. This allows us to bring each lifecycle up and down independently.
 
-When we use one of our module, we specify the latest tag for that module. This is both good for not breaking older use case of the module (a project can still use an older version of the module by referring a specific version tag) and because it clearly tells terragrunt that it needs to refetch the source code when we change the version (this speeds up development and prevents nasty state lockups from inconsistencies).
+When we use one of our module, we specify the latest tag for that module. This is both good for not breaking older use cases of the module (a project can still use an older version of the module by referring a specific version tag) and because it clearly tells terragrunt that it needs to refetch the source code when we change the version (this speeds up development and prevents nasty state lockups from inconsistencies).
